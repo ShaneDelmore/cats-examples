@@ -2,11 +2,13 @@ name := "cats-examples"
 
 version := "1.0"
 
-scalaVersion := "2.11.8"
+val scalaV = "2.11.8"
 
-libraryDependencies += "org.typelevel" %% "cats" % "0.6.0"
+lazy val core = project
+  .settings(moduleName := "core")
+  .settings(libraryDependencies += "org.typelevel" %% "cats" % "0.6.1")
+  .settings(scalaVersion := scalaV)
+  .settings(tutSettings)
+  .settings(tutSourceDirectory := baseDirectory.value / "docs" / "src")
+  .settings(tutTargetDirectory := baseDirectory.value / "docs")
 
-tutSettings
-
-tutSourceDirectory := baseDirectory.value / "docs" / "src"
-tutTargetDirectory := baseDirectory.value / "docs"

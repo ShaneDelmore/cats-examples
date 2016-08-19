@@ -1,0 +1,75 @@
+{
+  "version": "0.3.0",
+  "advices": [
+    {
+      "id": 1,
+      "error": {
+        "type": "typeMismatch",
+        "found": "demo\\.AsyncCall\\[.*\\]",
+        "required": ".*"
+      },
+      "text": "This message may indicate you have an extra layer of nesting and need to flatten your result type.\n\t\t This is most commonly caused by calling map instead of flatMap or recover instead of recoverWith when making a remote service call.",
+      "library": {
+        "groupId": "com.seriousbusiness",
+        "artifactId": "DbResponse",
+        "version": "1.0"
+      }
+    },
+    {
+      "id": 2,
+      "error": {
+        "type": "typeMismatch",
+        "found": "scala\\.concurrent\\.Future\\[.*\\]",
+        "required": ".*"
+      },
+      "text": "Maybe you used map where you should have used flatMap?",
+      "library": {
+        "groupId": "scala.lang",
+        "artifactId": "Future",
+        "version": "1.0"
+      }
+    },
+    {
+      "id": 3,
+      "error": {
+        "type": "implicitNotFound",
+        "parameter": "F",
+        "implicitType": "cats\\.Functor\\[.*\\]"
+      },
+      "text": "Did you forget to import stuff?\n\t\t To work with an DbResponse you need to have an ExecutionContext in scope and Cats implicits available.\n\t\t This will probably get you going:\n\t\t\timport scala.concurrent.ExecutionContext.Implicits.global\n\t\t\timport cats.std.all._\n\t\t Check out the Cats FAQ at https://github.com/typelevel/cats/blob/master/docs/src/main/tut/faq.md",
+      "library": {
+        "groupId": "cats",
+        "artifactId": "cats",
+        "version": "0.6.1"
+      }
+    },
+    {
+      "id": 4,
+      "error": {
+        "type": "notAMember",
+        "what": "value sequence",
+        "notAMemberOf": "scala\\.collection\\[.*\\]"
+      },
+      "text": "you need to import cats implicits and make sure your collection has Traverse implemented for it.  Try appending .toVector to your collection",
+      "library": {
+        "groupId": "cats",
+        "artifactId": "cats",
+        "version": "0.6.0"
+      }
+    },
+    {
+      "id": 5,
+      "error": {
+        "type": "notAMember",
+        "what": "value toRightXor",
+        "notAMemberOf": "Option\\[.*\\]"
+      },
+      "text": "you may need to import cats.implicits._",
+      "library": {
+        "groupId": "cats",
+        "artifactId": "cats",
+        "version": "0.6.1"
+      }
+    }
+  ]
+}
