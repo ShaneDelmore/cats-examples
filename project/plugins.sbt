@@ -1,8 +1,5 @@
-logLevel := Level.Warn
+addSbtPlugin("org.tpolecat" % "tut-plugin" % "0.4.7")
 
-resolvers += Resolver.bintrayRepo("tpolecat", "maven")
-addSbtPlugin("org.tpolecat" % "tut-plugin" % "0.4.3")
-
-addSbtPlugin("com.geirsson" % "sbt-scalafmt" % "0.2.8")
+addSbtPlugin("com.geirsson" % "sbt-scalafmt" % "0.4.10")
 
 addSbtPlugin("com.softwaremill.clippy" %% "plugin-sbt" % "0.3.0")
